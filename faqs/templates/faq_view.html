@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="lang">Choose a language:</label>
+    <form method="GET">
+        <select name="lang" id="lang">
+            <option value=""> </option>
+            <option value="hi"> Hindi</option>
+            <option value="bn">Bengali</option>
+            <option value="ja"> Japanese</option>
+            <option value="zh-CN">Chinese</option>
+           </select> <br />
+            
+           OR   <br />
+
+            <label>Please any other language code : </label>
+            <input name="other_lang" placeholder="e.g. fr, de, es" />
+            <input type="submit" value="Submit">
+    </form>
+
+    <ol>
+    {% for data in dataset %}
+    <li>
+       <strong>{{data.question}} </strong>  <br />
+        {{data.answer|safe}}
+    </li>
+   {%endfor%}
+</ol> 
+
+</body>
+</html>

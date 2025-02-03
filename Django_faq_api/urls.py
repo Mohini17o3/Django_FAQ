@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from faqs import views 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('' ,views.getFaqs , name = 'get_faqs'),
+    # path('postFAQ' ,views.PostFaqs , name = 'post_faqs')
 ]
