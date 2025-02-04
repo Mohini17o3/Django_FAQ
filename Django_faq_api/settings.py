@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5lg*end=w5go8b^1rnbqi^0(11fiv#$qij!7@yhgd-d^=o6gux'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '-5lg*end=w5go8b^1rnbqi^0(11fiv#$qij!7@yhgd-d^=o6gux')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['django-faqgunicorn-your-project-name.onrender.com']
 
@@ -119,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
