@@ -20,5 +20,5 @@ from faqs import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' ,views.getFaqs , name = 'get_faqs'),
-    # path('postFAQ' ,views.PostFaqs , name = 'post_faqs')
+    path('postFAQ' ,views.postFaqs , name = 'post_faqs')
 ]

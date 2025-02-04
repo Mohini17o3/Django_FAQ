@@ -1,3 +1,4 @@
+from django.forms import model_to_dict
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import FAQ
@@ -33,10 +34,32 @@ def getFaqs(request):
          return render(request , "faq_view.html" ,{'dataset':faq_data})  
 
 
-# def postFaqs(request):
+def postFaqs(request):
+    
+    if request.method == "POST":
+         question = request.POST.get('question')
+         language = request.POST.get('language' , 'en')
 
-#     if request.method == "POST":
-#        FAQ.objects.create(question = request.question , answer = request.answer)
+         if not question :
+             return JsonResponse({"error": "Question and answer are required"}, status=400)
+
+         newFAQ =FAQ.objects.create(
+          question = question , 
+          language = language)
+     
+
+         if request.headers.get('Accept') == 'application/json' :
+            return JsonResponse({'dataset' : {
+               'question' : newFAQ.question , 
+               'language' : newFAQ.language
+          } })
+
+         return render(request, "post_faq_view.html", {"success": "FAQ successfully added!"})
+
+    return render(request, "post_faq_view.html")
+
+
+
 
 
 
