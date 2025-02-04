@@ -17,14 +17,15 @@ class FAQ(models.Model):
         cache_translation = cache.get(cache_key)
 
         if cache_translation : 
-            print(f"using cached translation for {self.question} in {language}")
+            print(f"cache hit ! , using cached translation for {self.question} in {language}")
             return cache_translation
 
+        print("cache miss ")
         translation = TranslatedFAQ.objects.filter(translatedFaqs=self, language=language).first()
         
         if translation:
                print(f"Using existing translation for {self.question} in {language}")
-               cache_translation = {'questoin' : translated_question , 'answer' :translated_question}
+               cache_translation = {'question':translation.question , 'answer' :translation.answer}
                cache.set(cache_key , cache_translation , timeout= 864000)
                return cache_translation
         
