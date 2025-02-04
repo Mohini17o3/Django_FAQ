@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['django-faqgunicorn-your-project-name.onrender.com']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -130,6 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379",
+        'LOCATION': os.getenv('REDIS_URL', 'redis://localhost:6379'),
     }
 }
