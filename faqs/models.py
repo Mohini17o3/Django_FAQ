@@ -62,8 +62,8 @@ class FAQ(models.Model):
 
 class TranslatedFAQ(models.Model):
     translatedFaqs = models.ForeignKey(FAQ , on_delete=models.CASCADE , related_name='translations')
-    language = models.CharField(max_length=10)
     question = models.CharField(max_length=255)
+    language = models.CharField(max_length=10)
     answer = RichTextField()
 
 
