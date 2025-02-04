@@ -13,6 +13,10 @@ The application provides both **web views** (for interacting with the FAQ system
 
 ---
 
+<img src='/public/1.png'>
+<img src='/public/2.png'>
+<img src='/public/3.png'>
+
 ## Features
 
 - **CRUD operations** for FAQs
