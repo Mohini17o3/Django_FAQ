@@ -11,15 +11,70 @@
         background-color: rgb(28, 32, 31);
         color: rgb(23, 182, 129);
         display: flex;
+        flex-direction: column;
+        min-height: 100vh;
         justify-content: center;
         align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
       }
+
+      .main_form{
+         display: flex;
+         flex-direction: column;
+         row-gap: 30px;
+         justify-content: center;
+         align-items: center;
+      }
+      label{
+        font-size: 20px;
+
+      }
+
+      select , input {
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 6px;
+        background: #fff;
+            color: #000;
+      }
+
+      ol {
+            margin-top: 30px;
+            padding: 0;
+            width: 80%;
+            list-style: none;
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        .createButton{
+            padding: 10px;
+            border-radius: 8px;
+        margin-top: 6px;
+        background-color: rgb(23, 182, 129);
+        color :#fff ;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        input[type="submit"] {
+            background-color: rgb(23, 182, 129);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
     </style>
 
-    <div class="main_form">
 
-    <label for="lang">Choose a language:</label>
+
+    <div class="main_form">
     <form method="GET">
+        <label for="lang">Choose a language:</label>
         <select name="lang" id="lang">
             <option value=""> </option>
             <option value="hi"> Hindi</option>
@@ -28,13 +83,14 @@
             <option value="zh-CN">Chinese</option>
            </select> <br />
             
-           OR   <br />
+             <p>   OR  </p>  <br />
 
             <label>Please any other language code : </label>
             <input name="other_lang" placeholder="e.g. fr, de, es" />
             <input type="submit" value="Submit">
     </form>
 
+</div>
     <ol>
     {% for data in dataset %}
     <li>
@@ -44,9 +100,8 @@
    {%endfor%}
 </ol> 
 <a href="/postFAQ">
-<button>Create FAQ</button>
+<button class="createButton">Create FAQ</button>
 </a>
 
-</div>
 </body>
 </html>
