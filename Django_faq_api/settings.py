@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5lg*end=w5go8b^1rnbqi^0(11fiv#$qij!7@yhgd-d^=o6gux
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://django-faqgunicorn-your-project-name.onrender.com']
+ALLOWED_HOSTS = ['django-faqgunicorn-your-project-name.onrender.com']
 
 
 # Application definition
