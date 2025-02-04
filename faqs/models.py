@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from googletrans import Translator
-
+from django.core.cache import cache
 # Create your models here.
 
 
@@ -13,11 +13,21 @@ class FAQ(models.Model):
   
     
     def get_translated_question(self , language='en'):
+        cache_key = f"faq_translation_{self.id}_{language}" 
+        cache_translation = cache.get(cache_key)
+
+        if cache_translation : 
+            print(f"using cached translation for {self.question} in {language}")
+            return cache_translation
+
         translation = TranslatedFAQ.objects.filter(translatedFaqs=self, language=language).first()
         
         if translation:
                print(f"Using existing translation for {self.question} in {language}")
-               return {'question':translation.question, 'answer':translation.answer}
+               cache_translation = {'questoin' : translated_question , 'answer' :translated_question}
+               cache.set(cache_key , cache_translation , timeout= 864000)
+               return cache_translation
+        
         
         else :
               translator = Translator()
@@ -25,6 +35,7 @@ class FAQ(models.Model):
               translated_question = translator.translate(self.question, src='en', dest=language).text
               if self.answer:
                 translated_answer = translator.translate(self.answer, src='en', dest=language).text
+
               else:
                   translated_answer = 'No answer available.'  
 
@@ -35,9 +46,14 @@ class FAQ(models.Model):
                  answer = translated_answer     
              )
               
+
+              cache_translation = {'question' : translated_question , 'answer' : translated_answer }
+
+              cache.set(cache_key ,cache_translation ,timeout=86400)              
+              
               print(f"New translation saved: {new_translation.question} ({new_translation.language})")
 
-              return {'question' :translated_question , 'answer':translated_answer}
+              return cache_translation
 
     def __str__(self):
         return self.question
@@ -48,6 +64,10 @@ class TranslatedFAQ(models.Model):
     language = models.CharField(max_length=10)
     question = models.CharField(max_length=255)
     answer = RichTextField()
+
+
+    class Meta :
+        unique_together = ('translatedFaqs' , 'language')
 
 
     def __str__(self):
