@@ -43,7 +43,7 @@ class FAQ(models.Model):
                 translated_answer = translator.translate(self.answer, src=detected_lang, dest=language).text
 
               else:
-                  translated_answer = 'No answer available.'  
+                  translated_answer = translator.translate('No answer available', src=detected_lang, dest=language).text  
 
               new_translation =TranslatedFAQ.objects.create(
                  translatedFaqs = self,
