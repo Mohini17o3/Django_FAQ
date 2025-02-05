@@ -1,4 +1,5 @@
-Visit Deployed  : https://django-faqgunicorn-your-project-name.onrender.com/
+Visit Deployed : https://django-faqgunicorn-your-project-name.onrender.com/
+
 # Django FAQ API Project
 
 ## Overview
@@ -26,6 +27,33 @@ The application provides both **web views** (for interacting with the FAQ system
 - **Cache** for optimized API calls
 
 ---
+
+## Tech Stack
+
+This project is built using the following technologies:
+
+### Backend
+
+- **Django**: A high-level Python web framework for building fast and scalable web applications.
+- **SQLite**: The default database used in this project (can be replaced with others like PostgreSQL, MySQL, etc.).
+- **django-environ**: A package to manage environment variables.
+- **googletrans**: Used for translating FAQ questions and answers to different languages.
+- **CKEditor**: For rich text formatting in FAQ answers.
+
+### Frontend
+
+- **HTML/CSS**: Standard web technologies for creating static pages and user interfaces.
+- **Django Templates**: For rendering HTML content on the server side.
+
+### Deployment
+
+- **Render**: Platform for deploying and hosting the web application.
+- **Redis**: Used for caching translated FAQ data to optimize performance.
+
+### Other Tools
+
+- **Git**: Version control system to track changes in the codebase.
+- **Postman**: API testing tool for testing the backend API.
 
 ## Setup and Installation
 
