@@ -11,7 +11,7 @@ def create_superuser (app , schema_editor):
     User = app.get_model("auth" , "User")
     if not User.objects.filter(username = "admin").exists():
         password = env('admin_password')
-        User.objects.create_superuser("admin", "upret" , password)
+        User.objects.create_superuser(username="admin", email="upretimohini@gmail.com" , password=password)
 
 class Migration(migrations.Migration):
 
