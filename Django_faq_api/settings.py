@@ -24,7 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '-5lg*end=w5go8b^1rnbqi^0(11fiv#$qij!7@yhgd-d^=o6gux')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 ALLOWED_HOSTS = ['django-faqgunicorn-your-project-name.onrender.com']
 

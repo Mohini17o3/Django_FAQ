@@ -22,6 +22,7 @@ class FAQ(models.Model):
 
         print("cache miss ")
         translation = TranslatedFAQ.objects.filter(translatedFaqs=self, language=language).first()
+
         
         if translation:
                print(f"Using existing translation for {self.question} in {language}")
@@ -30,12 +31,16 @@ class FAQ(models.Model):
                return cache_translation
         
         
+
         else :
               translator = Translator()
 
-              translated_question = translator.translate(self.question, src='en', dest=language).text
+              detected_lang = translator.detect(self.question).lang
+              print(detected_lang)
+
+              translated_question = translator.translate(self.question, src=detected_lang, dest=language).text
               if self.answer:
-                translated_answer = translator.translate(self.answer, src='en', dest=language).text
+                translated_answer = translator.translate(self.answer, src=detected_lang, dest=language).text
 
               else:
                   translated_answer = 'No answer available.'  
